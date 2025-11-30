@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - مزارع الوادي</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .login-page {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .login-header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .login-header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+
+        .login-form {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(45, 90, 39, 0.1);
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .forgot-password {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .login-button:hover {
+            background: #1e3f1a;
+        }
+
+        .login-divider {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .login-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            left: 0;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        .login-divider span {
+            background: white;
+            padding: 0 15px;
+            color: #666;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .social-btn.google:hover {
+            border-color: #db4437;
+            color: #db4437;
+        }
+
+        .social-btn.facebook:hover {
+            border-color: #4267B2;
+            color: #4267B2;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signup-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- صفحة تسجيل الدخول -->
+    <section class="login-page">
+        <div class="login-container">
+            <div class="login-header">
+                <h1><i class="fas fa-tractor"></i> مزارع الوادي</h1>
+                <p>مرحباً بعودتك! سجل الدخول إلى حسابك</p>
+            </div>
+
+            <div class="login-form">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" name="email" placeholder="ادخل بريدك الإلكتروني" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">كلمة المرور</label>
+                        <input type="password" id="password" name="password" placeholder="ادخل كلمة المرور" required>
+                    </div>
+
+                    <div class="remember-forgot">
+                        <label class="remember-me">
+                            <input type="checkbox" name="remember">
+                            تذكرني
+                        </label>
+                        <a href="forgot-password.html" class="forgot-password">نسيت كلمة المرور؟</a>
+                    </div>
+
+                    <button type="submit" class="login-button">
+                        <i class="fas fa-sign-in-alt"></i>
+                        تسجيل الدخول
+                    </button>
+                </form>
+
+                <div class="login-divider">
+                    <span>أو سجل الدخول باستخدام</span>
+                </div>
+
+                <div class="social-login">
+                    <button type="button" class="social-btn google">
+                        <i class="fab fa-google"></i>
+                        جوجل
+                    </button>
+                    <button type="button" class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        فيسبوك
+                    </button>
+                </div>
+
+                <div class="signup-link">
+                    <p>ليس لديك حساب؟ <a href="signup.html">أنشئ حساب جديد</a></p>
+                </div>
+
+                <div class="farmer-login" style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+                    <p>هل أنت مزارع؟ <a href="farmer-login.html">سجل الدخول ك مزارع</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // معالجة نموذج تسجيل الدخول
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // هنا يمكن إضافة كود المصادقة
+            console.log('تسجيل الدخول:', { email, password });
+            
+            // محاكاة تسجيل الدخول الناجح
+            alert('تم تسجيل الدخول بنجاح!');
+            window.location.href = '../index.html';
+        });
+
+        // أحداث أزرار التسجيل الاجتماعي
+        document.querySelector('.social-btn.google').addEventListener('click', function() {
+            alert('سيتم توجيهك إلى تسجيل الدخول عبر جوجل');
+        });
+
+        document.querySelector('.social-btn.facebook').addEventListener('click', function() {
+            alert('سيتم توجيهك إلى تسجيل الدخول عبر فيسبوك');
+        });
+    </script>
+</body>
+</html>

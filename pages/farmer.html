@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المزارعين - مزارع الوادي</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- الهيدر -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-tractor"></i>
+                    مزارع الوادي
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="products.html">منتجاتنا</a></li>
+                        <li><a href="farmers.html" class="active">المزارعين</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <a href="cart.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <a href="login.html" class="btn-primary">تسجيل الدخول</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- محتوى صفحة المزارعين -->
+    <section class="farmers-page" style="margin-top: 100px; padding: 40px 0;">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="section-title">مزارعونا المتميزون</h1>
+                <p>تعرف على المزارعين الذين يقدمون لكم أفضل المنتجات الطازجة</p>
+            </div>
+
+            <!-- زر انضم كمزارع -->
+            <div class="join-farmer-section" style="text-align: center; margin: 40px 0;">
+                <a href="farmer-register.html" class="btn-primary" style="font-size: 1.1rem; padding: 15px 30px;">
+                    <i class="fas fa-user-plus"></i>
+                    انضم إلينا كمزارع
+                </a>
+            </div>
+
+            <!-- شبكة المزارعين -->
+            <div class="farmers-grid">
+                <!-- مزارع 1 -->
+                <div class="farmer-card">
+                    <div class="farmer-image" style="background-image: url('https://images.unsplash.com/photo-1471194402529-8e0f5a675de6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')"></div>
+                    <div class="farmer-info">
+                        <h3>مزارع الوادي</h3>
+                        <p class="farmer-location">
+                            <i class="fas fa-map-marker-alt"></i> 
+                            القصيم
+                        </p>
+                        <p class="farmer-desc">نوفر أفضل أنواع الخضروات والفواكه الطازجة منذ عام 2010</p>
+                        <div class="farmer-stats">
+                            <span><i class="fas fa-box"></i> 25 منتج</span>
+                            <span><i class="fas fa-star"></i> 4.8</span>
+                            <span><i class="fas fa-users"></i> 540 عميل</span>
+                        </div>
+                        <div class="farmer-actions">
+                            <a href="farmer-profile.html?id=1" class="btn-primary">عرض الملف</a>
+                            <a href="products.html?farmer=1" class="btn-outline">منتجات المزرعة</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- مزارع 2 -->
+                <div class="farmer-card">
+                    <div class="farmer-image" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')"></div>
+                    <div class="farmer-info">
+                        <h3>مزرعة النخيل</h3>
+                        <p class="farmer-location">
+                            <i class="fas fa-map-marker-alt"></i> 
+                            المدينة المنورة
+                        </p>
+                        <p class="farmer-desc">تنتج أجود أنواع التمور السعودي بجودة عالية وطعم مميز</p>
+                        <div class="farmer-stats">
+                            <span><i class="fas fa-box"></i> 18 منتج</span>
+                            <span><i class="fas fa-star"></i> 4.9</span>
+                            <span><i class="fas fa-users"></i> 320 عميل</span>
+                        </div>
+                        <div class="farmer-actions">
+                            <a href="farmer-profile.html?id=2" class="btn-primary">عرض الملف</a>
+                            <a href="products.html?farmer=2" class="btn-outline">منتجات المزرعة</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- مزارع 3 -->
+                <div class="farmer-card">
+                    <div class="farmer-image" style="background-image: url('https://images.unsplash.com/photo-1574943320219-553eb213f72d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')"></div>
+                    <div class="farmer-info">
+                        <h3>مزرعة الفواكه</h3>
+                        <p class="farmer-location">
+                            <i class="fas fa-map-marker-alt"></i> 
+                            الطائف
+                        </p>
+                        <p class="farmer-desc">متخصصون في إنتاج الفواكه الموسمية الطازجة بجودة فائقة</p>
+                        <div class="farmer-stats">
+                            <span><i class="fas fa-box"></i> 32 منتج</span>
+                            <span><i class="fas fa-star"></i> 4.7</span>
+                            <span><i class="fas fa-users"></i> 890 عميل</span>
+                        </div>
+                        <div class="farmer-actions">
+                            <a href="farmer-profile.html?id=3" class="btn-primary">عرض الملف</a>
+                            <a href="products.html?farmer=3" class="btn-outline">منتجات المزرعة</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- مزارع 4 -->
+                <div class="farmer-card">
+                    <div class="farmer-image" style="background-image: url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')"></div>
+                    <div class="farmer-info">
+                        <h3>مزرعة الألبان</h3>
+                        <p class="farmer-location">
+                            <i class="fas fa-map-marker-alt"></i> 
+                            الرياض
+                        </p>
+                        <p class="farmer-desc">نقدم منتجات ألبان طازجة وعالية الجودة من أبقارنا المدللة</p>
+                        <div class="farmer-stats">
+                            <span><i class="fas fa-box"></i> 15 منتج</span>
+                            <span><i class="fas fa-star"></i> 4.8</span>
+                            <span><i class="fas fa-users"></i> 670 عميل</span>
+                        </div>
+                        <div class="farmer-actions">
+                            <a href="farmer-profile.html?id=4" class="btn-primary">عرض الملف</a>
+                            <a href="products.html?farmer=4" class="btn-outline">منتجات المزرعة</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>مزارع الوادي</h3>
+                    <p>من تراب وطننا... حيث تُزرع الجودة، وتُحصد الثقة.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-snapchat"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="products.html">منتجاتنا</a></li>
+                        <li><a href="farmers.html">المزارعين</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>معلومات الاتصال</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 0551234567</li>
+                        <li><i class="fas fa-envelope"></i> info@almazari.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2024 مزارع الوادي. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منتجاتنا - مزارع الوادي</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- الهيدر -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-tractor"></i>
+                    مزارع الوادي
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html">الرئيسية</a></li>
+                        <li><a href="products.html" class="active">منتجاتنا</a></li>
+                        <li><a href="farmers.html">المزارعين</a></li>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <a href="cart.html" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <a href="login.html" class="btn-primary">تسجيل الدخول</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- محتوى صفحة المنتجات -->
+    <section class="products-page" style="margin-top: 100px; padding: 40px 0;">
+        <div class="container">
+            <h1 class="section-title">جميع المنتجات</h1>
+            
+            <!-- عوامل التصفية -->
+            <div class="filters" style="margin-bottom: 30px;">
+                <div class="filter-group">
+                    <label>التصنيف:</label>
+                    <select id="categoryFilter">
+                        <option value="all">جميع التصنيفات</option>
+                        <option value="dates">تمور</option>
+                        <option value="fruits">فواكه</option>
+                        <option value="vegetables">خضروات</option>
+                        <option value="dairy">ألبان</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>السعر:</label>
+                    <select id="priceFilter">
+                        <option value="all">جميع الأسعار</option>
+                        <option value="0-20">حتى 20 ريال</option>
+                        <option value="20-50">20 - 50 ريال</option>
+                        <option value="50-100">50 - 100 ريال</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- شبكة المنتجات -->
+            <div class="products-grid">
+                <!-- سيتم إضافة المنتجات ديناميكياً -->
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/products.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

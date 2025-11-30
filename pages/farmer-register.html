@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انضم كمزارع - مزارع الوادي</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .farmer-register-page {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .register-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .register-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .register-header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .register-header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+
+        .register-steps {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 0 30px;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            background: white;
+            font-weight: bold;
+        }
+
+        .step.active .step-number {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .step::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background: #ddd;
+            z-index: -1;
+        }
+
+        .step:last-child::after {
+            display: none;
+        }
+
+        .register-form {
+            padding: 30px;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(45, 90, 39, 0.1);
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .benefits-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .benefit-item i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .register-steps {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .step::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- صفحة تسجيل المزارع -->
+    <section class="farmer-register-page">
+        <div class="register-container">
+            <div class="register-header">
+                <h1><i class="fas fa-tractor"></i> انضم إلينا كمزارع</h1>
+                <p>وسّع نطاق عملك ووصل إلى آلاف العملاء</p>
+            </div>
+
+            <div class="register-steps">
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <span>المعلومات الأساسية</span>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <span>معلومات المزرعة</span>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <span>المنتجات</span>
+                </div>
+            </div>
+
+            <div class="register-form">
+                <form id="farmerRegisterForm">
+                    <!-- الخطوة 1: المعلومات الأساسية -->
+                    <div class="form-step active" id="step1">
+                        <h3 style="margin-bottom: 20px; color: var(--primary-color);">المعلومات الشخصية</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">الاسم الأول *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">اسم العائلة *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">البريد الإلكتروني *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">رقم الهاتف *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="password">كلمة المرور *</label>
+                                <input type="password" id="password" name="password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">تأكيد كلمة المرور *</label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <div></div> <!-- مساحة فارغة للمحاذاة -->
+                            <button type="button" class="btn-primary next-step" data-next="2">
+                                التالي <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- الخطوة 2: معلومات المزرعة -->
+                    <div class="form-step" id="step2">
+                        <h3 style="margin-bottom: 20px; color: var(--primary-color);">معلومات المزرعة</h3>
+                        
+                        <div class="form-group">
+                            <label for="farmName">اسم المزرعة *</label>
+                            <input type="text" id="farmName" name="farmName" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="farmType">نوع المزرعة *</label>
+                                <select id="farmType" name="farmType" required>
+                                    <option value="">اختر نوع المزرعة</option>
+                                    <option value="dates">مزرعة تمور</option>
+                                    <option value="fruits">مزرعة فواكه</option>
+                                    <option value="vegetables">مزرعة خضروات</option>
+                                    <option value="dairy">مزرعة ألبان</option>
+                                    <option value="mixed">مزرعة متنوعة</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="farmSize">مساحة المزرعة (هكتار)</label>
+                                <input type="number" id="farmSize" name="farmSize">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">المدينة *</label>
+                                <select id="city" name="city" required>
+                                    <option value="">اختر المدينة</option>
+                                    <option value="riyadh">الرياض</option>
+                                    <option value="jeddah">جدة</option>
+                                    <option value="dammam">الدمام</option>
+                                    <option value="medina">المدينة المنورة</option>
+                                    <option value="qassim">القصيم</option>
+                                    <option value="taif">الطائف</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="experience">سنوات الخبرة *</label>
+                                <select id="experience" name="experience" required>
+                                    <option value="">اختر سنوات الخبرة</option>
+                                    <option value="1-3">1-3 سنوات</option>
+                                    <option value="3-5">3-5 سنوات</option>
+                                    <option value="5-10">5-10 سنوات</option>
+                                    <option value="10+">أكثر من 10 سنوات</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="farmDescription">وصف المزرعة</label>
+                            <textarea id="farmDescription" name="farmDescription" rows="4" placeholder="أخبرنا أكثر عن مزرعتك ومنتجاتك..."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-outline prev-step" data-prev="1">
+                                <i class="fas fa-arrow-right"></i> السابق
+                            </button>
+                            <button type="button" class="btn-primary next-step" data-next="3">
+                                التالي <i class="fas fa-arrow-left"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- الخطوة 3: المنتجات -->
+                    <div class="form-step" id="step3">
+                        <h3 style="margin-bottom: 20px; color: var(--primary-color);">المنتجات</h3>
+                        
+                        <div class="form-group">
+                            <label>أنواع المنتجات التي تنتجها *</label>
+                            <div style="margin-top: 10px;">
+                                <label style="display: block; margin-bottom: 10px;">
+                                    <input type="checkbox" name="products" value="dates"> تمور
+                                </label>
+                                <label style="display: block; margin-bottom: 10px;">
+                                    <input type="checkbox" name="products" value="fruits"> فواكه
+                                </label>
+                                <label style="display: block; margin-bottom: 10px;">
+                                    <input type="checkbox" name="products" value="vegetables"> خضروات
+                                </label>
+                                <label style="display: block; margin-bottom: 10px;">
+                                    <input type="checkbox" name="products" value="dairy"> ألبان
+                                </label>
+                                <label style="display: block; margin-bottom: 10px;">
+                                    <input type="checkbox" name="products" value="honey"> عسل
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productionCapacity">القدرة الإنتاجية الشهرية (كجم)</label>
+                            <input type="number" id="productionCapacity" name="productionCapacity" placeholder="القدرة التقريبية للإنتاج الشهري">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="certifications">الشهادات والتراخيص (إن وجدت)</label>
+                            <textarea id="certifications" name="certifications" rows="3" placeholder="الشهادات الزراعية، العضوية، الجودة..."></textarea>
+                        </div>
+
+                        <div class="benefits-section">
+                            <h4 style="text-align: center; color: var(--primary-color);">مميزات الانضمام إلينا</h4>
+                            <div class="benefits-grid">
+                                <div class="benefit-item">
+                                    <i class="fas fa-users"></i>
+                                    <h5>وصول لألاف العملاء</h5>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <h5>زيادة المبيعات</h5>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="fas fa-truck"></i>
+                                    <h5>خدمة التوصيل</h5>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <h5>دفعات آمنة</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-outline prev-step" data-prev="2">
+                                <i class="fas fa-arrow-right"></i> السابق
+                            </button>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-check"></i>
+                                إنهاء التسجيل
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // إدارة الخطوات
+        const steps = document.querySelectorAll('.step');
+        const formSteps = document.querySelectorAll('.form-step');
+        const nextButtons = document.querySelectorAll('.next-step');
+        const prevButtons = document.querySelectorAll('.prev-step');
+
+        nextButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const currentStep = document.querySelector('.form-step.active');
+                const nextStepId = button.dataset.next;
+                const nextStep = document.getElementById(`step${nextStepId}`);
+                
+                // التحقق من صحة البيانات قبل الانتقال
+                if (validateStep(currentStep.id)) {
+                    currentStep.classList.remove('active');
+                    nextStep.classList.add('active');
+                    
+                    // تحديث مؤشر الخطوات
+                    updateSteps(nextStepId);
+                }
+            });
+        });
+
+        prevButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const currentStep = document.querySelector('.form-step.active');
+                const prevStepId = button.dataset.prev;
+                const prevStep = document.getElementById(`step${prevStepId}`);
+                
+                currentStep.classList.remove('active');
+                prevStep.classList.add('active');
+                
+                // تحديث مؤشر الخطوات
+                updateSteps(prevStepId);
+            });
+        });
+
+        function updateSteps(activeStep) {
+            steps.forEach(step => {
+                step.classList.remove('active');
+                if (parseInt(step.dataset.step) <= parseInt(activeStep)) {
+                    step.classList.add('active');
+                }
+            });
+        }
+
+        function validateStep(stepId) {
+            const step = document.getElementById(stepId);
+            const inputs = step.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = '#ff4444';
+                } else {
+                    input.style.borderColor = '';
+                }
+            });
+
+            // التحقق من تطابق كلمات المرور
+            if (stepId === 'step1') {
+                const password = document.getElementById('password');
+                const confirmPassword = document.getElementById('confirmPassword');
+                
+                if (password.value !== confirmPassword.value) {
+                    isValid = false;
+                    confirmPassword.style.borderColor = '#ff4444';
+                    alert('كلمات المرور غير متطابقة!');
+                }
+            }
+
+            if (!isValid) {
+                alert('يرجى ملء جميع الحقول المطلوبة بشكل صحيح');
+            }
+
+            return isValid;
+        }
+
+        // معالجة النموذج النهائي
+        document.getElementById('farmerRegisterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (validateStep('step3')) {
+                // هنا يمكن إضافة كود إرسال البيانات إلى الخادم
+                alert('تم تقديم طلب انضمامك بنجاح! سنقوم بالاتصال بك خلال 48 ساعة.');
+                window.location.href = '../index.html';
+            }
+        });
+    </script>
+</body>
+</html>
